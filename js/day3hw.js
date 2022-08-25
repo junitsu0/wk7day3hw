@@ -58,13 +58,8 @@ function getMovieInfo(movieName){
 // Output: *Warning* ET cannot be accessed because it is too short
 
 
-// I have fiddled with this for hours. Best I can get is
-// printing the output with the fields as "undefined". Error
-// output works fine.
 function printMovieInfo(movieName){
     getMovieInfo(movieName)
-        .then(data => console.log(data))
-        .then(movieName => getMovieInfo(movieName))
-        .then(title => console.log(`${title} directed by ${director}. A story of ${description} that runs for ${runtime} minutes.`))
+        .then(movie => console.log(`${movie.title} directed by ${movie.director}. A story of ${movie.description} that runs for ${movie.runtime} minutes.`))
         .catch(err => console.warn(err))
 }
