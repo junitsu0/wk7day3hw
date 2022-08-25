@@ -4,21 +4,26 @@ console.log("I ain't no Callback guuuuurl");
 // Update the createAdder function below so that
 // the below code works as intended
 
-// function createAdder(){};
+function createAdder(num){
+    function addUp(bonus){
+        return num + bonus
+    } 
+    return addUp  
+};
 
-// const addEight = createAdder(8);
-// console.log(addEight(10)); // 18
-// console.log(addEight(17)); // 25
-// console.log(addEight(50)); // 58
-// console.log(addEight(100)); // 108
-// console.log(addEight(92)); // 100
+const addEight = createAdder(8);
+console.log(addEight(10)); // 18
+console.log(addEight(17)); // 25
+console.log(addEight(50)); // 58
+console.log(addEight(100)); // 108
+console.log(addEight(92)); // 100
 
-// const addThree = createAdder(3);
-// console.log(addThree(10)); // 13
-// console.log(addThree(17)); // 20
-// console.log(addThree(50)); // 53
-// console.log(addThree(100)); // 103
-// console.log(addThree(92)); // 95
+const addThree = createAdder(3);
+console.log(addThree(10)); // 13
+console.log(addThree(17)); // 20
+console.log(addThree(50)); // 53
+console.log(addThree(100)); // 103
+console.log(addThree(92)); // 95
 
 
 // Exercise 2 - Promises 
@@ -50,4 +55,16 @@ function getMovieInfo(movieName){
 
 // Example 2
 // printMovieInfo('ET')
-// Output: *Warning* ET cannot be accessed because it it too short
+// Output: *Warning* ET cannot be accessed because it is too short
+
+
+// I have fiddled with this for hours. Best I can get is
+// printing the output with the fields as "undefined". Error
+// output works fine.
+function printMovieInfo(movieName){
+    getMovieInfo(movieName)
+        .then(data => console.log(data))
+        .then(movieName => getMovieInfo(movieName))
+        .then(title => console.log(`${title} directed by ${director}. A story of ${description} that runs for ${runtime} minutes.`))
+        .catch(err => console.warn(err))
+}
